@@ -3,7 +3,10 @@
 
 <HEAD>
   <TITLE> Heart </TITLE>
-  
+  <META NAME="Generator" CONTENT="EditPlus">
+  <META NAME="Author" CONTENT="">
+  <META NAME="Keywords" CONTENT="">
+  <META NAME="Description" CONTENT="">
   <meta content="width=device-width, initial-scale=1" name="viewport" />
 
 
@@ -149,6 +152,73 @@
     }
 
 
+    /* new button */
+    .wrap {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .button {
+      min-width: 300px;
+      min-height: 60px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 22px;
+      text-transform: uppercase;
+      letter-spacing: 1.3px;
+      font-weight: 700;
+      color: #313133;
+      background: #4FD1C5;
+      background: linear-gradient(90deg, rgba(129, 230, 217, 1) 0%, rgba(79, 209, 197, 1) 100%);
+      border: none;
+      border-radius: 1000px;
+      box-shadow: 12px 12px 24px rgba(79, 209, 197, .64);
+      transition: all 0.3s ease-in-out 0s;
+      cursor: pointer;
+      outline: none;
+      position: relative;
+      padding: 10px;
+    }
+
+    button::before {
+      content: '';
+      border-radius: 1000px;
+      min-width: calc(300px + 12px);
+      min-height: calc(60px + 12px);
+      border: 6px solid #00FFCB;
+      box-shadow: 0 0 60px rgba(0, 255, 203, .64);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: all .3s ease-in-out 0s;
+    }
+
+    .button:hover,
+    .button:focus {
+      color: #313133;
+      transform: translateY(-6px);
+    }
+
+    @keyframes ring {
+      0% {
+        width: 30px;
+        height: 30px;
+        opacity: 1;
+      }
+
+      100% {
+        width: 300px;
+        height: 300px;
+        opacity: 0;
+      }
+    }
+
+    /* end new button */
+
+
     .love-heart:before,
     #switch {
       display: none;
@@ -263,11 +333,10 @@
       }
 
       #hideMsg img {
-        top: 52% !important;
+        top: 28% !important;
         left: 35% !important;
         height: 170px;
         width: 170px;
-        z-index: 9999;
       }
 
       #pinkboard-container > div{
@@ -304,10 +373,11 @@
 
 <BODY>
   <!-- PART 1  -->
-  <!-- <div id="myGifContainer" style="position: absolute; top: 40%;  pointer-events: none;">
-    <iframe id="myGif" src="https://giphy.com/embed/vETeEioRsfFP3CJV16" width="200" height="400" 
+  <div id="myGifContainer" style="position: absolute; top: 40%;  pointer-events: none;">
+    <iframe id="myGif" src="https://giphy.com/embed/vETeEioRsfFP3CJV16" width="200" height="400" style=""
       frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
-  </div> -->
+    <!-- <img src="https://giphy.com/embed/vETeEioRsfFP3CJV16" alt="Computer man" style="width:48px;height:48px;"> -->
+  </div>
 
   
   <div style="position: absolute; top: 11%; text-align: center; font-size: 14px; ">
@@ -348,6 +418,8 @@
     <canvas id="pinkboard"></canvas>
     <div style="position: absolute; width: 100%; display: flex; justify-content: center;">
       <img src="./img/4815368adacaf878ed0f9feedfa338bf.jpg" width="200" height="200" />
+      <img src="./img/4815368adacaf878ed0f9feedfa338bf.jpg" width="200" height="200" />
+      <img src="./img/4815368adacaf878ed0f9feedfa338bf.jpg" width="200" height="200" />
     </div>
 
   </div>
@@ -363,7 +435,9 @@
 
     function play() {
       var val = document.getElementById('play-input').value;
+      console.log('inputText: ' + val);
       var hash = sha256(val);
+      console.log('SHA-256 Hash: ' + hash);
       if (hash == "728962325585d7e3fcfc28858fe166a66e656bf3b47eadb80354add06fd6b555") {
         document.getElementById("invalid-pass").style.visibility = "hidden";
       }
