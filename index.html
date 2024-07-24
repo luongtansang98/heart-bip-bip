@@ -7,6 +7,7 @@
   <META NAME="Author" CONTENT="">
   <META NAME="Keywords" CONTENT="">
   <META NAME="Description" CONTENT="">
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
 
 
   <style>
@@ -324,6 +325,45 @@
       top: 5px;
       border-radius: 0px 0px 0px 5px;
     }
+
+    /* Extra small devices (phones, 600px and down) */
+    @media only screen and (max-width: 600px) {
+      #myGifContainer {
+        left: 25%;
+      }
+
+      #hideMsg img {
+        top: 28% !important;
+        left: 35% !important;
+        height: 170px;
+        width: 170px;
+      }
+
+      #pinkboard-container > div{
+        top: 3%;
+      }
+
+      #pinkboard-container img {
+        height: 70px;
+        width: 70px;
+      }
+
+      #pinkboard-container #pinkboard {
+        height: 380px;
+        width: 380px;
+      }
+    }
+
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    @media only screen and (min-width: 600px) {
+      #myGifContainer {
+        left: 43%;
+      }
+
+      #pinkboard-container img {
+        visibility: hidden;
+      }
+    }
   </style>
 
   <!-- Thêm thư viện sha256.min.js từ CDN -->
@@ -332,21 +372,19 @@
 </HEAD>
 
 <BODY>
-  <div id="myGifContainer" style="position: absolute; top: 40%; left: 25%; pointer-events: none;">
-    <iframe id="myGif" src="https://giphy.com/embed/vETeEioRsfFP3CJV16" width="480" height="480" style=""
+  <!-- PART 1  -->
+  <div id="myGifContainer" style="position: absolute; top: 40%;  pointer-events: none;">
+    <iframe id="myGif" src="https://giphy.com/embed/vETeEioRsfFP3CJV16" width="200" height="400" style=""
       frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
     <!-- <img src="https://giphy.com/embed/vETeEioRsfFP3CJV16" alt="Computer man" style="width:48px;height:48px;"> -->
   </div>
-  <div id="hideMsg" style="color:white; position: absolute; top: 15%; left: 32%; font-size: 6em; visibility: hidden;">
-    <span>3</span>
-    <img style="position: fixed; top: 26%; left: 50%;" src="./img/kingdom_of_tigers_07.png" width="300" height="300" />
-  </div>
-  <div style="position: absolute; top: 11%; text-align: center; font-size: 40px;">
 
+  
+  <div style="position: absolute; top: 11%; text-align: center; font-size: 14px; ">
     <h2 id="txt-h2" class="txt-disappear" style="color: white; font-family: cursive;">
       Nhập mã xong click cái nút phía dưới đi ạ...
     </h2>
-    <input id="play-input" type="text" style="width: 25%; font-size: 40px;" /><br />
+    <input id="play-input" type="text" style="width: 40%; font-size: 30px;" /><br />
 
     <div style="font-size: 25px;">
       <p id="invalid-pass" style="color: white; visibility: hidden; padding-top: 15px">Nhập sai òi... </p>
@@ -361,21 +399,24 @@
           </label>
         </div>
       </div>
-
-
-      <!-- <div class="wrap" id="play-now" onclick="play()" style="font-size: 45px; display: inline-block; padding: 15px; ">
-        <button class="button">Đây ạ! Đây ạ!</button>
-      </div> -->
     </div>
   </div>
+
+  <!-- PART 2  -->
+  <div id="hideMsg" style="color:white; position: absolute; top: 15%; left: 32%; font-size: 3em;visibility: hidden; ">
+    <span>3</span>
+    <img style="position: fixed; top: 26%; left: 50%;" src="./img/kingdom_of_tigers_07.png" width="300" height="300" />
+  </div>
+
+  <!-- PART 3  -->
   <audio id="audio" controls muted="true" style="opacity: 0; visibility: hidden;">
     <source src="HeartbeatNightcore-MarcusMartinus-4597640.mp3#t=00:01:01" type="audio/mpeg">
     Your browser does not support the audio tag.
   </audio>
-  <div class="box" id="pinkboard-container" style="visibility: hidden; background-image: url('./img/vot-cau-long.png');width: 100%;
-  height: 74%; background-repeat: no-repeat; background-position: center;">
+  <div class="box" id="pinkboard-container" style="visibility: hidden; background-image: url('./img/testing.jpg');width: 100%;
+  height: 74%; background-repeat: no-repeat; background-position: center;     background-size: contain;">
     <canvas id="pinkboard"></canvas>
-    <div style="position: absolute; height: 200px; width: 100%; display: flex; justify-content: center;">
+    <div style="position: absolute; width: 100%; display: flex; justify-content: center;">
       <img src="./img/4815368adacaf878ed0f9feedfa338bf.jpg" width="200" height="200" />
       <img src="./img/4815368adacaf878ed0f9feedfa338bf.jpg" width="200" height="200" />
       <img src="./img/4815368adacaf878ed0f9feedfa338bf.jpg" width="200" height="200" />
@@ -408,10 +449,10 @@
 
       setTimeout(() => {
         document.getElementById("play-now").style.visibility = "hidden";
-        
-        }, 500);
-        document.getElementById("play-input").style.visibility = "hidden";
-        document.getElementById("txt-h2").classList.add("have");
+
+      }, 500);
+      document.getElementById("play-input").style.visibility = "hidden";
+      document.getElementById("txt-h2").classList.add("have");
 
       setTimeout(function () {
         var audio = document.getElementById("audio");
@@ -436,7 +477,7 @@
           var timer = setInterval(function () {
             $('#hideMsg span').animate({
               opacity: 0.25,
-              fontSize: '3em'
+              fontSize: '1.5em'
             }, 500, function () {
               $('#hideMsg span').css('opacity', 1);
               $('#hideMsg span').css('font-size', '1em');
@@ -686,8 +727,6 @@
 
   <script>
     let icon = document.querySelector('ion-icon');
-    console.log('icon');
-    console.log(icon);
     icon.onclick = function () {
       icon.classList.toggle('active');
     }
